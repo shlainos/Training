@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 def open_without_closing(filename):
     fd1 = open(filename, 'a')
-    fd1.write('line 2\n')
+    fd1.write('I wouldn\'t do with it anything\n')
 
 
 def main():
