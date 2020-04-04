@@ -1,15 +1,25 @@
 # -*- coding: utf-8 -*-
-def open_with_closing(filename):
-    with open(filename, 'a') as fd1:
-        fd1.write('I wouldn\'t do with it anything\n')
+import sys
+
+
+
+def find_file_add(filename):
+    scriptadd = sys.argv[0]
+    folderadd = scriptadd[:scriptadd.rfind('/')]
+    fileadd = folderadd + '/' + filename
+    return fileadd
+
+
+def print_file_content(fileadd):
+    with open(fileadd) as filetoprint:
+        for line in filetoprint:
+            print line,
 
 
 def main():
-    open_with_closing(filename)
-    with open(filename, 'r') as fd2:
-        for line in fd2:
-            print line,
+    filename = raw_input("please enter a file name\n")
+    fileadd = find_file_add(filename)
+    print_file_content(fileadd)
 
 if __name__ == '__main__':
-    filename = r'C:\Heights\PortableApps\PortablePython2.7.6.1\App\hafifot\python101\temp_file.txt'
     main()
