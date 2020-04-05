@@ -64,17 +64,6 @@ def input_check():
     return file_exists
 
 
-'''
-def main():
-    open_with_closing(filename)
-    with open(filename, 'r') as fd2:
-        for line in fd2:
-            print line,'''
-
-
-
-
-
 def main():
     if input_check():
         open_and_solve(ex_file)
