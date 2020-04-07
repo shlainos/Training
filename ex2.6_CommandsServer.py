@@ -9,15 +9,21 @@ def main():
     a commands server that replies to 4 possible commands
     """
     longest_reply = 1024
-    buffer_size = 1024
+    buffer_size = 14
+    end_flag = '/fin'
     server_socket = socket.socket()
     server_socket.bind(('0.0.0.0', 1729))
     server_socket.listen(1)
     (client_socket, client_address) = server_socket.accept()
 
     while True:
-        command = client_socket.recv(buffer_size)
+        raw_command = client_socket.recv(buffer_size)
+        print raw_command
 
+        if raw_command.find(end_flag) == -1:
+            continue
+        else:
+            command = raw_command[:raw_command.find(end_flag)]
         print command
 
         if command == 'BufferSize':
