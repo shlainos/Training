@@ -9,10 +9,15 @@ def main():
 
     my_socket = socket.socket()
     my_socket.connect(('127.0.0.1', 1729))
+
+    #getting required buffer size from server
+    my_socket.send("BufferSize")
+    buffersize = my_socket.recv(1024)
+
     while True:
         command = raw_input("Please Enter one of 4 possible requests: Time, Name, Rand, Exit\n")
         my_socket.send(command)
-        reply = my_socket.recv(1024)
+        reply = my_socket.recv(int(buffersize))
         print reply
         if command == 'Exit':
             my_socket.close()
