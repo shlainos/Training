@@ -9,7 +9,8 @@ def main():
     my_socket = socket.socket()
     my_socket.connect(('127.0.0.1', 1729))
     my_socket.send(massage)
-    my_socket.recv(1024)
+    returned_massage = my_socket.recv(1024)
+    print returned_massage
     my_socket.close()
 
 
